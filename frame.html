@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PrettyBox - Frame It</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff;
+    color: #222;
+    user-select: none;
+  }
+
+  /* Top pink bar */
+  .top-bar {
+    background-color: #f8a7c2;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .top-bar-left img.logo-img {
+    height: 55px;
+    border-radius: 8px;
+  }
+
+  .instagram-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #d46c89;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: default;
+    user-select: none;
+  }
+
+  .instagram-wrapper svg {
+    width: 30px;
+    height: 30px;
+    fill: #d46c89;
+  }
+
+  .language-text-top {
+    font-size: 14px;
+    color: #a49a9a;
+    user-select: none;
+  }
+
+  /* Navbar */
+  nav {
+    width: 95%;
+    max-width: 1000px;
+    margin: 20px auto;
+    border: 2px solid #f8a7c2;
+    border-radius: 12px;
+    padding: 8px 20px;
+    box-shadow: 0 0 10px #f8a7c2bb;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  nav .logo-text {
+    font-weight: 700;
+    font-size: 22px;
+    color: black;
+    cursor: default;
+  }
+
+  nav a {
+    color: #a49a9a;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.35s ease;
+  }
+
+  nav a.frameit-link {
+    color: #f48ca1;
+    font-weight: 700;
+  }
+
+  nav a:hover {
+    color: #f48ca1;
+  }
+
+  nav .language-text {
+    margin-left: auto;
+    font-size: 13px;
+    color: #a49a9a;
+  }
+
+  /* Score Section */
+  .score-section {
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #d46c89;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .score-icon {
+    width: 24px;
+    height: 24px;
+    fill: #e66f92;
+  }
+
+  /* Main container for customize */
+  .customize-container {
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    display: flex;
+    gap: 28px;
+  }
+
+  /* Left preview images vertical stack */
+  .preview-images {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 10px;
+    padding: 8px;
+    background: #fff;
+  }
+
+  .preview-images img {
+    max-width: 150px;
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 0 8px #d47a95aa;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .preview-images img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Right content area with customization options */
+  .customize-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .section-label {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  /* Frame color container */
+  .frame-color-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Circular color buttons with border ring and different colors */
+
+  .color-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2.8px solid transparent;
+    cursor: pointer;
+    box-shadow: 0 0 3px #cbb9b9;
+    transition: border-color 0.3s ease;
+  }
+
+  /* Special circle for multi-color plus */
+  .color-circle.multi-color {
+    position: relative;
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
+    border: 2.8px solid #eee;
+  }
+
+  .color-circle.multi-color::after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: 900;
+    font-size: 22px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.7);
+  }
+
+  /* Color circle swatches from black to white, reds, pinks, purples, greens, yellows, oranges */
+
+  .color-black { background-color: #000; }
+  .color-darkgray { background-color: #333; }
+  .color-gray { background-color: #555; }
+  .color-lightgray { background-color: #888; }
+  .color-silver { background-color: #aaa; }
+  .color-lightergray { background-color: #ccc; }
+  .color-lightestgray { background-color: #e0e0e0; }
+  .color-white { background-color: #fff; border: 2.8px solid #999; box-shadow:none; }
+
+  .color-red { background-color: #e02b20; }
+  .color-pink { background-color: #f7a2a1; }
+  .color-pink2 { background-color: #ebb9e0; }
+  .color-lightpurple { background-color: #d8b4ea; }
+  .color-purple { background-color: #9a7de4; }
+  .color-indigo { background-color: #5e43db; }
+
+  .color-cyan { background-color: #59b9bc; }
+  .color-lightcyan { background-color: #93d3e1; }
+  .color-lightblue { background-color: #43aded; }
+  .color-blue { background-color: #1272f2; }
+  .color-darkblue { background-color: #0049c7; }
+  .color-navy { background-color: #091655; }
+
+  .color-green { background-color: #2fca73; }
+  .color-lightgreen { background-color: #a8d244; }
+  .color-palegreen { background-color: #d2f2a0; }
+
+  .color-yellow { background-color: #f2dd5c; }
+  .color-orange { background-color: #f69e56; }
+  .color-brightorange { background-color: #f36822; }
+
+  /* Pattern circles - approximate backgrounds using gradients and patterns */
+
+  .pattern-1 { background: #ffc9d2; } /* pink solid */
+  .pattern-2 {
+    background:
+      repeating-conic-gradient(#bd4549 0% 25%, #fee6e6 25% 50%);
+  }
+  .pattern-3 {
+    background:
+      radial-gradient(circle 10px, #d3b299 90%, transparent 95%),
+      radial-gradient(circle 10px, #b6977a 90%, transparent 95%);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
+  }
+  .pattern-4 {
+    background: repeating-linear-gradient(45deg, #f8e1d8, #f8e1d8 5px, #d8bab6 5px, #d8bab6 10px);
+  }
+  .pattern-5 {
+    background: #eae0d4;
+  }
+  .pattern-6 {
+    background:
+      linear-gradient(90deg, #7d6b54 25%, transparent 25%),
+      linear-gradient(90deg, #7d6b54 25%, transparent 25%);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
+    background-repeat: repeat;
+  }
+  .pattern-7 {
+    background: radial-gradient(circle, #7a8ca6 20%, transparent 50%);
+  }
+  .pattern-8 {
+    background:
+      repeating-linear-gradient(45deg, #cfcfd2, #cfcfd2 3px, #dfe2e6 3px, #dfe2e6 5px);
+  }
+
+  /* Highlight border on selected circle (assuming selected) */
+  .color-circle.selected {
+    border-color: #f48ca1;
+    box-shadow: 0 0 6px #f48ca1cc;
+  }
+
+  /* Stickers container */
+  .stickers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .sticker {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  /* Merchandise container */
+  .merch-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .merch-item {
+    height: 28px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  /* Label sections */
+  .section-label {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  /* Centered “Customize your style” text */
+  .customize-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    user-select: none;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Top pink bar -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <img class="logo-img" src="logo.png" alt="PrettyBox Card" />
+  </div>
+  <div class="instagram-wrapper" aria-label="Instagram prettybox">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="instagram-wrapper-icon" aria-hidden="true" focusable="false" >
+      <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5-.25a1 1 0 110 2 1 1 0 010-2z"/>
+    </svg>
+    <a href="https://www.instagram.com/prettybox.space?igsh=MXkwajZjeG5pMWdiZg%3D%3D&utm_source=qr">PrettyBox💕</a>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav role="navigation" aria-label="Primary">
+  <div class="logo-text" aria-label="PrettyBox logo">PrettyBox</div>
+  <a href="home.html" >Home</a>
+  <a href="about.html" >About</a>
+  <a href="#" class="frameit-link" aria-current="page">Frame it</a>
+  <a href="membership.html" >Membership</a>
+  <a href="contact.html" >Contact</a>
+  <a href="privacy-police.html" >Privacy police</a>
+  <div class="language-text" aria-label="Language text right">Language</div>
+</nav>
+
+<!-- Score Section -->
+<div class="score-section" aria-label="Points score 500">
+  <svg class="score-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="10" fill="#f48ca1" />
+    <path d="M12 18l-6-6 6-6 6 6-6 6z" fill="#e66f92" />
+  </svg>
+  500
+</div>
+
+<!-- Customize your style -->
+<div class="customize-title">Customize your style!</div>
+
+<!-- Main container -->
+<div class="customize-container" role="main">
+
+  <!-- Left preview images -->
+  <div class="preview-images" aria-label="Preview images">
+    <img src="33.jpg" alt="Preview image 1" />
+    <img src="34.jpg" alt="Preview image 2" />
+    <img src="35.jpg" alt="Preview image 3" />
+  </div>
+
+  <!-- Options on right -->
+  <div class="customize-content">
+
+    <!-- Frame color section -->
+    <div>
+      <div class="section-label">Frame color</div>
+      <div class="frame-color-container" role="list" aria-label="Select frame color">
+
+        <div class="color-circle multi-color" role="listitem" tabindex="0" title="Multi Color"></div>
+
+        <div class="color-circle color-black" role="listitem" tabindex="0" title="Black"></div>
+        <div class="color-circle color-darkgray" role="listitem" tabindex="0" title="Dark Gray"></div>
+        <div class="color-circle color-gray" role="listitem" tabindex="0" title="Gray"></div>
+        <div class="color-circle color-lightgray" role="listitem" tabindex="0" title="Light Gray"></div>
+        <div class="color-circle color-silver" role="listitem" tabindex="0" title="Silver"></div>
+        <div class="color-circle color-lightergray" role="listitem" tabindex="0" title="Lighter Gray"></div>
+        <div class="color-circle color-lightestgray" role="listitem" tabindex="0" title="Lightest Gray"></div>
+        <div class="color-circle color-white" role="listitem" tabindex="0" title="White"></div>
+
+        <div class="color-circle color-red" role="listitem" tabindex="0" title="Red"></div>
+        <div class="color-circle color-pink" role="listitem" tabindex="0" title="Pink"></div>
+        <div class="color-circle color-pink2" role="listitem" tabindex="0" title="Pink 2"></div>
+        <div class="color-circle color-lightpurple" role="listitem" tabindex="0" title="Light Purple"></div>
+        <div class="color-circle color-purple" role="listitem" tabindex="0" title="Purple"></div>
+        <div class="color-circle color-indigo" role="listitem" tabindex="0" title="Indigo"></div>
+
+        <div class="color-circle color-cyan" role="listitem" tabindex="0" title="Cyan"></div>
+        <div class="color-circle color-lightcyan" role="listitem" tabindex="0" title="Light Cyan"></div>
+        <div class="color-circle color-lightblue" role="listitem" tabindex="0" title="Light Blue"></div>
+        <div class="color-circle color-blue" role="listitem" tabindex="0" title="Blue"></div>
+        <div class="color-circle color-darkblue" role="listitem" tabindex="0" title="Dark Blue"></div>
+        <div class="color-circle color-navy" role="listitem" tabindex="0" title="Navy"></div>
+
+        <div class="color-circle color-green" role="listitem" tabindex="0" title="Green"></div>
+        <div class="color-circle color-lightgreen" role="listitem" tabindex="0" title="Light Green"></div>
+        <div class="color-circle color-palegreen" role="listitem" tabindex="0" title="Pale Green"></div>
+
+        <div class="color-circle color-yellow" role="listitem" tabindex="0" title="Yellow"></div>
+        <div class="color-circle color-orange" role="listitem" tabindex="0" title="Orange"></div>
+        <div class="color-circle color-brightorange" role="listitem" tabindex="0" title="Bright Orange"></div>
+
+        <div class="color-circle pattern-1" role="listitem" tabindex="0" title="Pattern 1"></div>
+        <div class="color-circle pattern-2" role="listitem" tabindex="0" title="Pattern 2"></div>
+        <div class="color-circle pattern-3" role="listitem" tabindex="0" title="Pattern 3"></div>
+        <div class="color-circle pattern-4" role="listitem" tabindex="0" title="Pattern 4"></div>
+        <div class="color-circle pattern-5" role="listitem" tabindex="0" title="Pattern 5"></div>
+        <div class="color-circle pattern-6" role="listitem" tabindex="0" title="Pattern 6"></div>
+        <div class="color-circle pattern-7" role="listitem" tabindex="0" title="Pattern 7"></div>
+        <div class="color-circle pattern-8" role="listitem" tabindex="0" title="Pattern 8"></div>
+
+      </div>
+    </div>
+
+    <!-- Sticker section -->
+    <div>
+      <div class="section-label">Sticker</div>
+      <div class="stickers-container" role="list" aria-label="Select a sticker">
+
+        <img src="6.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="7.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="8.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="9.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="10.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="11.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="12.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="13.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="14.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="15.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="16.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="17.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="18.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="19.jpg" class="sticker" role="listitem" tabindex="0" />
+        <img src="20.jpg" class="sticker" role="listitem" tabindex="0" />
+      </div>
+    </div>
+
+    <!-- Merchandise section -->
+    <div>
+      <div class="section-label">Merchandise</div>
+      <div class="merch-container" role="list" aria-label="Select merchandise">
+
+        <!-- Merchandise images as inline svg or img -->
+        <img src="21.jpg" class="merch-item" role="listitem" tabindex="0" />
+        <img src="22.jpg" class="merch-item" role="listitem" tabindex="0" />
+        <img src="23.jpg" class="merch-item" role="listitem" tabindex="0" />
+        <img src="24.jpg" class="merch-item" role="listitem" tabindex="0" />
+        <img src="25.jpg" class="merch-item" role="listitem" tabindex="0" />
+        <img src="26.jpg" class="merch-item" role="listitem" tabindex="0" />
+        <img src="27.jpg" class="merch-item" role="listitem" tabindex="0" />
+        <img src="28.jpg" class="merch-item" role="listitem" tabindex="0" />
+        <img src="29.jpg" class="merch-item" role="listitem" tabindex="0" />
+        <img src="30.jpg" class="merch-item" role="listitem" tabindex="0" />
+        <img src="31.jpg" class="merch-item" role="listitem" tabindex="0" />
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PrettyBox</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: white;
+            color: #444;
+        }
+
+        /* Top pink bar */
+        .top-bar {
+            background-color: #f8a7c2;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-section img.logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .instagram-icon {
+            width: 30px;
+            height: 30px;
+            fill: #d46c89;
+            cursor: pointer;
+        }
+
+        .instagram-wrapper {
+            display: flex;
+            align-items: center;
+            color: #d46c89;
+            font-weight: 700;
+            font-size: 18px;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Navbar */
+        nav {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 900px;
+            border: 2px solid #f8a7c2;
+            border-radius: 12px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: white;
+            box-shadow: 0 0 10px #f8a7c2aa;
+        }
+
+        nav .nav-logo {
+            font-weight: 700;
+            font-size: 22px;
+            color: black;
+            margin-right: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #a49a9a;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        nav a.home-link {
+            color: #f48ca1;
+            font-weight: 700;
+        }
+
+        .language-text {
+            margin-left: auto;
+            font-size: 12px;
+            color: #a49a9a;
+            user-select: none;
+        }
+
+        /* Content wrapper */
+        .content-wrapper {
+            width: 90%;
+            max-width: 900px;
+            margin: 10px auto;
+            background: linear-gradient(180deg, #ffe6f1, #f8a7c2);
+            border-radius: 25px;
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: relative;
+            min-height: 350px;
+        }
+
+        /* Score/Like section top left */
+        .score-section {
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #d46c89;
+        }
+
+        .score-section svg {
+            width: 26px;
+            height: 26px;
+            fill: #e66f92;
+        }
+
+        /* Images container */
+        .image-gallery {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
+        .image-gallery img {
+            max-height: 320px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 0 8px #d47a95aa;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* START button */
+        .start-button {
+            background: linear-gradient(180deg, #f8a7c2, #f48ca1);
+            color: rgb(0, 0, 0);
+            font-weight: 900;
+            border-radius: 12px;
+            padding: 14px 30px;
+            border: 2px solid #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 7px #d47a95aa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            user-select: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .start-button:hover {
+            box-shadow: 0 6px 15px #f48ca1cc;
+            background: #f36f91;
+            color: white;
+        }
+
+        .start-button svg {
+            width: 26px;
+            height: 26px;
+            stroke: black;
+            stroke-width: 2;
+            fill: transparent;
+        }
+
+        .start-button:hover svg {
+            stroke: white;
+        }
+
+        /* Login button bottom left */
+        .login-button {
+            margin: 30px auto 60px auto;
+            background: linear-gradient(180deg, #f8a7c2, #f48ca1);
+            border: none;
+            border-radius: 25px;
+            color: black;
+            font-weight: 600;
+            padding: 12px 30px;
+            cursor: pointer;
+            display: block;
+            box-shadow: 0 3px 6px #d47a95aa;
+            max-width: 80px;
+            text-align: center;
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+
+        .login-button:hover {
+            background: #f36f91;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top pink bar -->
+    <div class="top-bar">
+        <div class="logo-section">
+            <img class="logo-img" src="logo.png" alt="PrettyBox Card">
+        </div>
+        <div class="instagram-wrapper">
+            <svg class="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5-.25a1 1 0 110 2 1 1 0 010-2z"/></svg>
+            <a href="https://www.instagram.com/prettybox.space?igsh=MXkwajZjeG5pMWdiZg%3D%3D&utm_source=qr">PrettyBox💕</a>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-logo">PrettyBox</div>
+        <a href="home.html" class="home-link">Home</a>
+        <a href="about.html">About</a>
+        <a href="frame.html">Frame it</a>
+        <a href="membership.html">Membership</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-police.html">Privacy police</a>
+        <div class="language-text">Language</div>
+    </nav>
+
+    <!-- Content area -->
+    <div class="content-wrapper">
+        <div class="score-section">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f36f91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                 xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 18l-6-6 6-6 6 6-6 6z"/>
+            </svg>
+            500
+        </div>
+        <div class="image-gallery">
+            <img src="1.jpg" alt="Frame 1" />
+            <img src="2.jpg" alt="Frame 2" />
+            <a href="index.html" class="start-button" aria-label="Start Button">
+                START
+                <svg viewBox="0 0 24 24" >
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                    <circle cx="12" cy="14" r="3" />
+                    <line x1="12" y1="11" x2="12" y2="11" />
+                    <path d="M6 7V5a2 2 0 012-2h8a2 2 0 012 2v2" />
+                </svg>
+            </a>
+            <img src="3.jpg" alt="Frame 3" />
+            <img src="5.jpg" alt="Frame 5" />
+        </div>
+    </div>
+
+    <!-- Login button -->
+ 
+</body>
+</html>

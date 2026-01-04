@@ -1,0 +1,388 @@
+   /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: white;
+            color: #444;
+        }
+
+        /* Top pink bar */
+        .top-bar {
+            background-color: #f8a7c2;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-section img.logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .instagram-icon {
+            width: 30px;
+            height: 30px;
+            fill: #d46c89;
+            cursor: pointer;
+        }
+
+        .instagram-wrapper {
+            display: flex;
+            align-items: center;
+            color: #d46c89;
+            font-weight: 700;
+            font-size: 18px;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Navbar */
+        nav {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 900px;
+            border: 2px solid #f8a7c2;
+            border-radius: 12px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: white;
+            box-shadow: 0 0 10px #f8a7c2aa;
+        }
+
+        nav .nav-logo {
+            font-weight: 700;
+            font-size: 22px;
+            color: black;
+            margin-right: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #a49a9a;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        nav a.home-link {
+            color: #f48ca1;
+            font-weight: 700;
+        }
+
+        .language-text {
+            margin-left: auto;
+            font-size: 12px;
+            color: #a49a9a;
+            user-select: none;
+        }
+
+        /* Content wrapper */
+        .content-wrapper {
+            width: 90%;
+            max-width: 900px;
+            margin: 10px auto;
+            background: linear-gradient(180deg, #ffe6f1, #f8a7c2);
+            border-radius: 25px;
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: relative;
+            min-height: 350px;
+        }
+
+        /* Score/Like section top left */
+        .score-section {
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #d46c89;
+        }
+
+        .score-section svg {
+            width: 26px;
+            height: 26px;
+            fill: #e66f92;
+        }
+
+        /* Images container */
+        .image-gallery {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
+        .image-gallery img {
+            max-height: 320px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 0 8px #d47a95aa;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* START button */
+        .start-button {
+            background: linear-gradient(180deg, #f8a7c2, #f48ca1);
+            color: rgb(0, 0, 0);
+            font-weight: 900;
+            border-radius: 12px;
+            padding: 14px 30px;
+            border: 2px solid #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 7px #d47a95aa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            user-select: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .start-button:hover {
+            box-shadow: 0 6px 15px #f48ca1cc;
+            background: #f36f91;
+            color: white;
+        }
+
+        .start-button svg {
+            width: 26px;
+            height: 26px;
+            stroke: black;
+            stroke-width: 2;
+            fill: transparent;
+        }
+
+        .start-button:hover svg {
+            stroke: white;
+        }
+
+        /* Login button bottom left */
+        .login-button {
+            margin: 30px auto 60px auto;
+            background: linear-gradient(180deg, #f8a7c2, #f48ca1);
+            border: none;
+            border-radius: 25px;
+            color: black;
+            font-weight: 600;
+            padding: 12px 30px;
+            cursor: pointer;
+            display: block;
+            box-shadow: 0 3px 6px #d47a95aa;
+            max-width: 80px;
+            text-align: center;
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+
+        .login-button:hover {
+            background: #f36f91;
+            color: white;
+        }
+
+
+/* Style Umum untuk Body Utama (Photo Booth) */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffebee, #ffc1cc); /* Gradient pink lembut */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+/* Style Khusus untuk Halaman Login */
+body.login-body {
+    background: linear-gradient(to bottom, #ffebee, #ffc1cc);
+}
+
+.login-container {
+    text-align: center;
+    background: linear-gradient(to bottom, #fff0f5, #ffd1dc); /* Pink muda gradient */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(255, 105, 180, 0.3); /* Shadow pink transparan */
+    border: 2px solid #ff69b4; /* Border hot pink */
+    max-width: 350px;
+    margin: 20px;
+}
+
+.login-container h1 {
+    color: #c2185b; /* Pink gelap untuk judul */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.3);
+}
+
+.login-container p {
+    color: #880e4f; /* Pink tua untuk teks */
+    margin-bottom: 20px;
+    font-style: italic; /* Sedikit italic untuk nuansa fun */
+}
+
+#loginForm input {
+    width: 100%;
+    max-width: 250px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ff69b4;
+    border-radius: 25px;
+    font-size: 16px;
+    text-align: center;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+#loginForm input:focus {
+    outline: none;
+    border-color: #ff1493;
+    box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+}
+
+#loginForm button {
+    background-color: #ff69b4; /* Hot pink */
+    color: white;
+    padding: 12px 24px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 250px;
+}
+
+#loginForm button:hover {
+    background-color: #ff1493;
+}
+
+.error {
+    color: #d32f2f; /* Merah untuk error */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Style Container Utama (Photo Booth) */
+.container {
+    text-align: center;
+    background: linear-gradient(to bottom, #fff0f5, #ffd1dc); /* Pink muda gradient */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(255, 105, 180, 0.3); /* Shadow pink transparan */
+    border: 2px solid #ff69b4; /* Border hot pink */
+    max-width: 400px;
+}
+
+#video {
+    width: 100%;
+    max-width: 320px;
+    height: 240px;
+    border: 3px solid #ff69b4; /* Border hot pink */
+    border-radius: 10px;
+    background: #000;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
+}
+
+#canvas {
+    display: none; /* Awalnya disembunyikan, muncul setelah capture */
+    width: 100%;
+    max-width: 320px;
+    height: 240px;
+    border: 3px solid #ff1493; /* Border deep pink */
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(255, 20, 147, 0.2);
+}
+
+button {
+    background-color: #ff69b4; /* Hot pink untuk tombol utama */
+    color: white;
+    padding: 12px 24px;
+    margin: 8px;
+    border: none;
+    border-radius: 25px; /* Lebih bulat untuk tema cute */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff1493; /* Pink lebih gelap saat hover */
+}
+
+button:disabled {
+    background-color: #ffb3d9; /* Pink pudar saat disabled */
+    cursor: not-allowed;
+}
+
+#downloadBtn {
+    background-color: #e91e63; /* Pink gelap untuk download */
+}
+
+#downloadBtn:hover {
+    background-color: #c2185b; /* Pink lebih dalam */
+}
+
+#retryBtn {
+    background-color: #ff4081; /* Pink medium untuk retry */
+}
+
+#retryBtn:hover {
+    background-color: #f50057; /* Pink vibrant */
+}
+
+.logout-btn {
+    background-color: #f50057; /* Pink merah untuk logout */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background-color: #c2185b;
+}
+
+h1 {
+    color: #c2185b; /* Pink gelap untuk judul */
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.3);
+}
+
+p {
+    color: #880e4f; /* Pink tua untuk teks */
+    margin-bottom: 10px;
+    font-style: italic; /* Sedikit italic untuk nuansa fun */
+}

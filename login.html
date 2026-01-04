@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PrettyBox</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-body"> <!-- Class khusus untuk login -->
+    <div class="login-container">
+        <h1>PrettyBox💕</h1>
+        <p>Selamat datang di PrettyBox💕! Silakan login untuk mulai foto.</p>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="errorMsg" class="error" style="display: none;">Username atau password salah!</p>
+    </div>
+    <script src="script-login.js"></script>
+</body>
+</html>

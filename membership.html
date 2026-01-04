@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PrettyBox Membership</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Top pink bar */
+        .top-bar {
+            background-color: #f8a7c2;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+            justify-content: space-between;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .top-bar-left img {
+            width: 80px;
+            height: auto;
+        }
+
+        .instagram-wrapper {
+            display: flex;
+            align-items: center;
+            color: #d46c89;
+            font-weight: 700;
+            font-size: 18px;
+            gap: 10px;
+            cursor: default;
+            user-select: none;
+        }
+
+        .instagram-icon {
+            width: 28px;
+            height: 28px;
+            fill: #d46c89;
+        }
+
+        .language-text {
+            font-size: 12px;
+            color: #a49a9a;
+            user-select: none;
+        }
+
+        /* Navbar */
+        nav {
+            width: 90%;
+            max-width: 1100px;
+            margin: 15px auto 40px auto;
+            border: 2px solid #f8a7c2;
+            border-radius: 12px;
+            padding: 10px 25px;
+            background-color: #fff;
+            box-shadow: 0 0 10px #f8a7c2aa;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav .logo-text {
+            font-weight: 700;
+            font-size: 24px;
+            color: black;
+        }
+
+        nav a {
+            color: #a49a9a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        nav a.membership-link {
+            color: #f48ca1;
+            font-weight: 700;
+        }
+
+        nav a:hover {
+            color: #f48ca1;
+        }
+
+        nav .language-text {
+            margin-left: auto;
+            font-size: 12px;
+            color: #a49a9a;
+        }
+
+        /* Score section */
+        .score-section {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto 20px auto;
+            font-weight: 700;
+            font-size: 18px;
+            color: #d46c89;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            user-select: none;
+        }
+
+        .score-icon {
+            width: 24px;
+            height: 24px;
+            fill: #e66f92;
+        }
+
+        /* Membership Cards Container */
+        .membership-cards {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Individual Card */
+        .card {
+            background-color: #f8a7c2;
+            border-radius: 25px;
+            padding: 25px 30px;
+            width: 320px;
+            box-shadow: 0 0 10px #d47a95aa;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .card h2 {
+            font-weight: 900;
+            font-size: 22px;
+            color: #222;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: #222;
+        }
+
+        .price span {
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .divider {
+            border-top: 1.5px solid #e487a0;
+            margin-bottom: 10px;
+        }
+
+        ul.features {
+            list-style-type: disc;
+            padding-left: 16px;
+            font-weight: 500;
+            color: #222;
+        }
+
+        ul.features li {
+            margin-bottom: 7px;
+            font-size: 14px;
+        }
+
+        /* Button inside card */
+        .card button {
+            background: white;
+            border-radius: 12px;
+            border: none;
+            color: #222;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 12px;
+            box-shadow: 0 4px 7px #d47a95aa;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .card button:hover {
+            background: #f48ca1;
+            color: white;
+            box-shadow: 0 6px 15px #f48ca1dd;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .membership-cards {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .membership-cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top pink bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <img src="logo.png" alt="PrettyBox Logo" />
+        </div>
+        <div class="instagram-wrapper">
+            <svg class="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5-.25a1 1 0 110 2 1 1 0 010-2z"/>
+            </svg>
+            <a href="https://www.instagram.com/prettybox.space?igsh=MXkwajZjeG5pMWdiZg%3D%3D&utm_source=qr">PrettyBox💕</a>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-text">PrettyBox</div>
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="frame.html">Frame it</a>
+        <a href="membership.html" class="membership-link">Membership</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-police.html">Privacy police</a>
+        <div class="language-text">Language</div>
+    </nav>
+
+    <!-- Score -->
+    <div class="score-section">
+        <svg class="score-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 18l-6-6 6-6 6 6-6 6z" fill="#f36f91"/>
+        </svg>
+        500
+    </div>
+
+    <!-- Membership cards -->
+    <div class="membership-cards">
+
+        <div class="card">
+            <h2>Pay-Per-Use</h2>
+            <div class="price">IDR <b>15,000</b> <span>/ use</span></div>
+            <div class="divider"></div>
+            <ul class="features">
+                <li>Get 3 collages</li>
+                <li>Cancel anytime</li>
+                <li>Get full access filter, frame, and collages</li>
+                <li>Photo with your idol</li>
+                <li>Exclusive Merchandise Access</li>
+            </ul>
+            <button type="button">Get Membership Per-Use</button>
+        </div>
+
+        <div class="card">
+            <h2>Week</h2>
+            <div class="price">IDR <b>25,000</b> <span>/ week</span></div>
+            <div class="divider"></div>
+            <ul class="features">
+                <li>Get access for 7 day</li>
+                <li>Get full access filter, frame, and collages</li>
+                <li>Cancel anytime</li>
+                <li>Photo with your idol</li>
+                <li>Exclusive Merchandise Access</li>
+            </ul>
+            <button type="button">Get Membership Per-Week</button>
+        </div>
+
+        <div class="card">
+            <h2>Month</h2>
+            <div class="price">IDR <b>39,000</b> <span>/ month</span></div>
+            <div class="divider"></div>
+            <ul class="features">
+                <li>Get access for 30 day</li>
+                <li>Get full access filter, frame, and collages</li>
+                <li>Cancel anytime</li>
+                <li>Photo with your idol</li>
+                <li>Exclusive Merchandise Access</li>
+            </ul>
+            <button type="button">Get Membership Per-Month</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
